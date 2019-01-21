@@ -13,5 +13,5 @@ def index():
   AuditorID = df['auditorid']
   x1 = np.array(AuditorID)
   x2 = np.array(DepartmentID)
-  z = zip(x, x1, x2, x3, y)
+  z = zip(x1, x2)
   return render_template('index.html', z=z)
