@@ -8,4 +8,4 @@ con = psycopg2.connect("dbname=dfhaphi9vtlee6 user=qcmezkrwpidutn password=3fd32
 def index():
   sql = """select * from qms.aud2"""
   df = pd.io.sql.read_sql(sql, con)
-  return 'hello, world'
+  return render_template('index.html')
