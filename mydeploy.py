@@ -8,4 +8,9 @@ con = psycopg2.connect("dbname=dfhaphi9vtlee6 user=qcmezkrwpidutn password=3fd32
 def index():
   sql = """select * from qms.aud2"""
   df = pd.io.sql.read_sql(sql, con)
-  return render_template('index.html')
+  DepartmentID = df['deptid']
+  AuditorID = df['auditorid']
+  x1 = np.array(AuditorID)
+  x2 = np.array(DepartmentID)
+  z = zip(x, x1, x2, x3, y)
+  return render_template('index.html', z=z)
