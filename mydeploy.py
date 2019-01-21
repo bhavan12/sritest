@@ -1,3 +1,5 @@
+from io import BytesIO
+import pandas as pd
 from flask import Flask
 import psycopg2
 app = Flask (__name__)
