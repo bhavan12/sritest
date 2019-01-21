@@ -4,6 +4,17 @@
     <title>Data </title>
   </head>
   <body>
-  <h1>hello</h1>
+  <table>
+    <tr>
+        <th>auditorid</th>
+      <th>deptid</th>
+    </tr>
+    {% for x1,x2 in z %}
+    <tr>
+        <th>{{x1}}</th>
+        <th>{{x2}}</th>
+    </tr>
+      {%endfor%}
+</table>
   </body>
   </html>
