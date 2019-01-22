@@ -4,23 +4,42 @@
     <title>Data </title>
   </head>
   <body>
-     <form method = "POST">
+  <form method = "POST">
          AuditorID:<input type = "number" name = "num1" />
          siteid:<input type = "number" name = "num2" />
          deptid:<input type = "number" name = "num3" />
          <input type = "submit"/>
       </form>
-  <table>
+    		<table>
     <tr>
         <th>auditorid</th>
-      <th>deptid</th>
+        <th>siteid</th>
+        <th>deptid</th>
+        <th>cper</th>
     </tr>
-    {% for x1,x2 in z %}
+    {% for x,x1,x2y in z %}
     <tr>
+        <th>{{x}}</th>
         <th>{{x1}}</th>
         <th>{{x2}}</th>
+        <th>{{y}}</th>
     </tr>
       {%endfor%}
 </table>
+  <h>predicting the auditor future critical percentage </h>
+  <table>
+      <tr>
+      <th>auditorid</th>
+        <th>siteid</th>
+        <th>deptid</th>
+        <th>cper</th>
+    </tr>
+       <tr>
+        <th>{{a}}</th>
+        <th>{{b}}</th>
+        <th>{{c}}</th>
+        <th>{{e}}</th>
+    </tr>
+  </table>
   </body>
-  </html>
+</html>
