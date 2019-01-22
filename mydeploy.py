@@ -3,7 +3,7 @@ from flask import Flask, render_template, send_file, make_response
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 import psycopg2
