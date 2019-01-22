@@ -24,7 +24,7 @@ def index():
     AuditorID = df['auditorid']
     SiteID = df['siteid']
     cper = df['cper']
-    X = np.array([AuditorID, SiteID, DepartmentID, noofobser]).T
+    X = np.array([AuditorID, SiteID, DepartmentID]).T
     y = np.array(cper)
     from sklearn.model_selection import train_test_split
     x1 = np.array(AuditorID)
