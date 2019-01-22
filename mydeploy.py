@@ -34,7 +34,7 @@ def index():
     # Predict the response for test dataset
     y_pred = model.predict(z)
     y_pred=int(y_pred)
-    return render_template('index.html',a=num1,b=num2,c=num3e=y_pred)
+    return render_template('index.html',a=num1,b=num2,c=num3,e=y_pred)
   else: 
     sql = """select * from qms.aud2""" 
     df = pd.io.sql.read_sql(sql, con)
