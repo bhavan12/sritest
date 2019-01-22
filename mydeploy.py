@@ -32,7 +32,7 @@ def index():
     abc = AdaBoostRegressor(n_estimators=50,
                             learning_rate=1)
     model = abc.fit(X_train, y_train)
-    z = np.array([num1,num2,num3,num4]).reshape(1, -1)
+    z = np.array([num1,num2,num3]).reshape(1, -1)
     # Predict the response for test dataset
     y_pred = model.predict(z)
     y_pred=int(y_pred)
