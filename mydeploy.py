@@ -5,7 +5,7 @@ from io import BytesIO
 import numpy as np
 #import matplotlib.pyplot as plt
 import seaborn as sns
-#import pandas as pd
+import pandas as pd
 import psycopg2
 #import xgboost as xgb
 #from flask import Flask, render_template,request
