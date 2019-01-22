@@ -29,6 +29,8 @@ def index():
     y = np.array(cper)
     from sklearn.model_selection import train_test_split
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
+    abc = AdaBoostRegressor(n_estimators=50,
+                            learning_rate=1)
     model = abc.fit(X_train, y_train)
     z = np.array([num1,num2,num3,num4]).reshape(1, -1)
     # Predict the response for test dataset
