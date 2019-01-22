@@ -2,6 +2,7 @@ from io import BytesIO
 import numpy as np
 import pandas as pd
 import psycopg2
+from flask import Flask
 app = Flask(__name__)
 con = psycopg2.connect("dbname=dfhaphi9vtlee6 user=qcmezkrwpidutn password=3fd32869bc0d2fb997e2c47dfe339f552267e7c40bc00949638ae3b43947a64d host=ec2-107-20-183-142.compute-1.amazonaws.com")
 @app.route('/')
