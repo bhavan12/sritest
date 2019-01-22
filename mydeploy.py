@@ -69,7 +69,7 @@ def index():
     y1 = np.array(cper)
     y2 = np.append(y, y_pred)
     z = zip(x, x1, x2, y)
-    return render_template('index.html', x=x, y=y, z=z)
+    return render_template('index.html', z=z)
 
 @app.route('/delete')
 def user():
