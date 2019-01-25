@@ -2,7 +2,7 @@ from io import BytesIO
 import numpy as np
 import pandas as pd
 import psycopg2
-from flask import Flask, render_template,request,send_file, make_response
+from flask import Flask, render_template,request,send_file, make_response,json
 from flask_bootstrap import Bootstrap
 from pandas.io.json import json_normalize
 app = Flask(__name__)
@@ -38,6 +38,8 @@ def index():
     # Predict the response for test dataset
     y_pred = model.predict(z)
     y_pred=int(y_pred)
+    pythonDictionary = {'a':num1, 'b':num2, 'c':num3,'e':y_pred}
+    return  json.dumps(pythonDictionary)
     return render_template('index.html',a=num1,b=num2,c=num3,e=y_pred)
   else: 
     sql = """select * from qms.aud2""" 
