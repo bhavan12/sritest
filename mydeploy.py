@@ -4,6 +4,7 @@ import pandas as pd
 import psycopg2
 from flask import Flask, render_template,request,send_file, make_response
 from flask_bootstrap import Bootstrap
+from pandas.io.json import json_normalize
 app = Flask(__name__)
 Bootstrap(app)
 import xgboost as xgb
@@ -61,6 +62,15 @@ def index():
     # Predict the response for test dataset
     y_pred = model.predict(X_test)
     a=np.sqrt(mean_squared_error(y_test, y_pred))
+    s = df.to_dict('records ')
+    print(s)
+    d = str(s)
+    print(d)
+    return json.dumps(d)
+    p = json_normalize(d)
+    print(p.values)
+    data = pd.io.json.json_normalize(d)
+    print(data.values)
     x = np.array(AuditorID)
     #x = np.append(x, num1)
     x1 = np.array(SiteID)
@@ -69,7 +79,6 @@ def index():
     #x2 = np.append(x, num3)
     x3 = np.array(noofobser)
     #x3 = np.append(x, num4)
-
     y1 = np.array(cper)
     y2 = np.append(y, y_pred)
     z = zip(x, x1, x2, y)
