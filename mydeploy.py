@@ -58,19 +58,9 @@ def index():
                             learning_rate=1)
     # Train Adaboost Classifer
     model = abc.fit(X_train, y_train)
-
     # Predict the response for test dataset
     y_pred = model.predict(X_test)
     a=np.sqrt(mean_squared_error(y_test, y_pred))
-    s = df.to_dict('records ')
-    print(s)
-    d = str(s)
-    print(d)
-    #return json.dumps(d)
-    p = json_normalize(d)
-    print(p.values)
-    data = pd.io.json.json_normalize(d)
-    print(data.values)
     x = np.array(AuditorID)
     #x = np.append(x, num1)
     x1 = np.array(SiteID)
