@@ -66,7 +66,7 @@ def index():
     print(s)
     d = str(s)
     print(d)
-    return json.dumps(d)
+    #return json.dumps(d)
     p = json_normalize(d)
     print(p.values)
     data = pd.io.json.json_normalize(d)
