@@ -36,7 +36,7 @@ def index():
   pythonDictionary = {'a':num1, 'b':num2, 'c':num3,'e':y_pred}
   return  json.dumps(pythonDictionary)
    # return render_template('index.html',a=num1,b=num2,c=num3,e=y_pred)
- '''if request.method == 'POST':
+  '''if request.method == 'POST':
     userDetails = request.form
     num1= userDetails['num1']
     num2 = userDetails['num2']
@@ -44,7 +44,7 @@ def index():
     num1 = int(num1)
     num2 = int(num2)
     num3 = int(num3)
- else: 
+  else: 
     sql = """select * from qms.aud2""" 
     df = pd.io.sql.read_sql(sql, con)
     DepartmentID = df['deptid']
