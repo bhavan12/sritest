@@ -33,7 +33,7 @@ def index():
   X = np.array([AuditorID, SiteID, DepartmentID]).T
   y = np.array(cper)
   from sklearn.model_selection import train_test_split
-  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1)
+  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.0)
   abc = AdaBoostRegressor(n_estimators=50,
                           learning_rate=1)
   model = abc.fit(X_train, y_train)
