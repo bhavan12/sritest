@@ -13,6 +13,14 @@ from sklearn.metrics import mean_squared_error
 con = psycopg2.connect("dbname=dfhaphi9vtlee6 user=qcmezkrwpidutn password=3fd32869bc0d2fb997e2c47dfe339f552267e7c40bc00949638ae3b43947a64d host=ec2-107-20-183-142.compute-1.amazonaws.com")
 @app.route('/app1',methods=['GET', 'POST'])
 def index():
+  '''if request.method == 'POST':
+    userDetails = request.form
+    num1= userDetails['num1']
+    num2 = userDetails['num2']
+    num3 = userDetails['num3']
+    num1 = int(num1)
+    num2 = int(num2)
+    num3 = int(num3)'''
   num1 = request.args.get('lid')
   num2 = request.args.get('mid')
   num3 = request.args.get('nid')
@@ -36,15 +44,7 @@ def index():
   pythonDictionary = {'a':num1, 'b':num2, 'c':num3,'e':y_pred}
   return  json.dumps(pythonDictionary)
    # return render_template('index.html',a=num1,b=num2,c=num3,e=y_pred)
-  '''if request.method == 'POST':
-    userDetails = request.form
-    num1= userDetails['num1']
-    num2 = userDetails['num2']
-    num3 = userDetails['num3']
-    num1 = int(num1)
-    num2 = int(num2)
-    num3 = int(num3)
-  else: 
+  '''else: 
     sql = """select * from qms.aud2""" 
     df = pd.io.sql.read_sql(sql, con)
     DepartmentID = df['deptid']
