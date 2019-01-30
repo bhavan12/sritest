@@ -44,8 +44,8 @@ def index():
     y_pred=int(y_pred)
     pythonDictionary = {'a':num1, 'b':num2, 'c':num3,'e':y_pred}
     return  json.dumps(pythonDictionary)
-  except requests.ConnectionError, e:
-    print e
+  except requests.exceptions.RequestException as e:
+    print(e)
    # return render_template('index.html',a=num1,b=num2,c=num3,e=y_pred)
   '''else: 
     sql = """select * from qms.aud2""" 
