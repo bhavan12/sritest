@@ -42,7 +42,7 @@ def index():
     y_pred = model.predict(z)
     y_pred=int(y_pred)
     pythonDictionary = {'a':num1, 'b':num2, 'c':num3,'e':y_pred}
-    return  json.dumps(pythonDictionary)
+  return  json.dumps(pythonDictionary)
    # return render_template('index.html',a=num1,b=num2,c=num3,e=y_pred)
   '''else: 
     sql = """select * from qms.aud2""" 
