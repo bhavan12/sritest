@@ -5,13 +5,16 @@ import psycopg2
 from flask import Flask, render_template,request,send_file, make_response,json
 from flask_bootstrap import Bootstrap
 from pandas.io.json import json_normalize
+from flask_cors import  CORS,cross_origin
 app = Flask(__name__)
+CORS(app, support_credentials=True)
 Bootstrap(app)
 import xgboost as xgb
 from sklearn.ensemble import AdaBoostRegressor
 from sklearn.metrics import mean_squared_error
 con = psycopg2.connect("dbname=dfhaphi9vtlee6 user=qcmezkrwpidutn password=3fd32869bc0d2fb997e2c47dfe339f552267e7c40bc00949638ae3b43947a64d host=ec2-107-20-183-142.compute-1.amazonaws.com")
 @app.route('/app1',methods=['GET', 'POST'])
+@cross_origin(supports_credentials=True)
 def index():
   #if request.method == 'POST':
   '''userDetails = request.form
