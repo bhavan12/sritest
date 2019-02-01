@@ -12,7 +12,8 @@ Bootstrap(app)
 import xgboost as xgb
 from sklearn.ensemble import AdaBoostRegressor
 from sklearn.metrics import mean_squared_error
-con = psycopg2.connect("dbname=dfhaphi9vtlee6 user=qcmezkrwpidutn password=3fd32869bc0d2fb997e2c47dfe339f552267e7c40bc00949638ae3b43947a64d host=ec2-107-20-183-142.compute-1.amazonaws.com")
+con = psycopg2.connect("dbname=daabi6mhbsu5fm user=ewyivrzjhyxxyy password=dc37c6729bd76a50666bfc9ffad4fa11b6e3a1974834b3b5ab6933f23a25254d host=ec2-54-83-17-151.compute-1.amazonaws.com
+")
 @app.route('/app1',methods=['GET', 'POST'])
 @cross_origin(supports_credentials=True)
 def index():
