@@ -49,7 +49,6 @@ def index():
         pythonDictionary = {'a':num1, 'b':num2, 'c':num3,'e':y_pred}
         return  json.dumps(pythonDictionary)
     except ValueError:
-      flash('invalid parameters')
       return 'enter valid parameters'
 
    # return render_template('index.html',a=num1,b=num2,c=num3,e=y_pred)
