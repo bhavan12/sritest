@@ -17,35 +17,41 @@ con = psycopg2.connect("dbname=daabi6mhbsu5fm user=ewyivrzjhyxxyy password=dc37c
 @cross_origin(supports_credentials=True)
 def index():
   if request.method=='GET':
-    '''userDetails = request.form
-    num1= userDetails['num1']
-    num2 = userDetails['num2']
-    num3 = userDetails['num3']
-    num1 = int(num1)
-    num2 = int(num2)
-      num3 = int(num3)'''
-    num1 = request.args.get('lid')
-    num2 = request.args.get('mid')
-    num3 = request.args.get('nid')
-    sql = """select * from qms.aud2"""
-    df = pd.io.sql.read_sql(sql, con)
-    DepartmentID = df['deptid']
-    AuditorID = df['auditorid']
-    SiteID = df['siteid']
-    cper = df['cper']
-    X = np.array([AuditorID, SiteID, DepartmentID]).T
-    y = np.array(cper)
-    from sklearn.model_selection import train_test_split
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.0)
-    abc = AdaBoostRegressor(n_estimators=50,
-                            learning_rate=1)
-    model = abc.fit(X_train, y_train)
-    z = np.array([num1,num2,num3]).reshape(1, -1)
-    # Predict the response for test dataset
-    y_pred = model.predict(z)
-    y_pred=int(y_pred)
-    pythonDictionary = {'a':num1, 'b':num2, 'c':num3,'e':y_pred}
-    return  json.dumps(pythonDictionary)
+    try:
+      if (isinstance(int(request.args.get('lid')),int) and isinstance(int(request.args.get('mid')),int) and isinstance(int(request.args.get('nid')),int)) == True:
+        '''userDetails = request.form
+        num1= userDetails['num1']
+        num2 = userDetails['num2']
+        num3 = userDetails['num3']
+        num1 = int(num1)
+        num2 = int(num2)
+          num3 = int(num3)'''
+        num1 = request.args.get('lid')
+        num2 = request.args.get('mid')
+        num3 = request.args.get('nid')
+        sql = """select * from qms.aud2"""
+        df = pd.io.sql.read_sql(sql, con)
+        DepartmentID = df['deptid']
+        AuditorID = df['auditorid']
+        SiteID = df['siteid']
+        cper = df['cper']
+        X = np.array([AuditorID, SiteID, DepartmentID]).T
+        y = np.array(cper)
+        from sklearn.model_selection import train_test_split
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.0)
+        abc = AdaBoostRegressor(n_estimators=50,
+                                learning_rate=1)
+        model = abc.fit(X_train, y_train)
+        z = np.array([num1,num2,num3]).reshape(1, -1)
+        # Predict the response for test dataset
+        y_pred = model.predict(z)
+        y_pred=int(y_pred)
+        pythonDictionary = {'a':num1, 'b':num2, 'c':num3,'e':y_pred}
+        return  json.dumps(pythonDictionary)
+    except ValueError:
+      flash('invalid parameters')
+      return 'enter valid parameters'
+
    # return render_template('index.html',a=num1,b=num2,c=num3,e=y_pred)
   '''else: 
     sql = """select * from qms.aud2""" 
