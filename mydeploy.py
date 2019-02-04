@@ -29,6 +29,9 @@ def index():
         num1 = request.args.get('lid')
         num2 = request.args.get('mid')
         num3 = request.args.get('nid')
+        num1=int(num1)
+        num2=int(num2)
+        num3=int(num3)
         sql = """select * from qms.aud2"""
         df = pd.io.sql.read_sql(sql, con)
         DepartmentID = df['deptid']
