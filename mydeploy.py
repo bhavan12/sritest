@@ -71,7 +71,7 @@ def index():
           return  json.dumps(pythonDictionary)
         return 'values entered are out of range'
     except ValueError:
-      return 'enter valid parameters'
+      return 'enter integer type parameters'
 
    # return render_template('index.html',a=num1,b=num2,c=num3,e=y_pred)
   '''else: 
