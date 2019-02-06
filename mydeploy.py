@@ -19,38 +19,57 @@ def index():
   if request.method=='GET':
     try:
       if (isinstance(int(request.args.get('lid')),int) and isinstance(int(request.args.get('mid')),int) and isinstance(int(request.args.get('nid')),int)) == True:
-        '''userDetails = request.form
-        num1= userDetails['num1']
-        num2 = userDetails['num2']
-        num3 = userDetails['num3']
-        num1 = int(num1)
-        num2 = int(num2)
-          num3 = int(num3)'''
         num1 = request.args.get('lid')
         num2 = request.args.get('mid')
         num3 = request.args.get('nid')
-        num1=int(num1)
-        num2=int(num2)
-        num3=int(num3)
-        sql = """select * from qms.aud2"""
-        df = pd.io.sql.read_sql(sql, con)
-        DepartmentID = df['deptid']
-        AuditorID = df['auditorid']
-        SiteID = df['siteid']
-        cper = df['cper']
-        X = np.array([AuditorID, SiteID, DepartmentID]).T
-        y = np.array(cper)
-        from sklearn.model_selection import train_test_split
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.0)
-        abc = AdaBoostRegressor(n_estimators=50,
-                                learning_rate=1)
-        model = abc.fit(X_train, y_train)
-        z = np.array([num1,num2,num3]).reshape(1, -1)
-        # Predict the response for test dataset
-        y_pred = model.predict(z)
-        y_pred=int(y_pred)
-        pythonDictionary = {'a':num1, 'b':num2, 'c':num3,'e':y_pred}
-        return  json.dumps(pythonDictionary)
+        num1 = int(num1)
+        num2 = int(num2)
+        num3 = int(num3)
+        cur=con.cursor()
+        sql="SELECT auditorid  FROM qms.aud2 where auditorid=%s LIMIT 1"
+        cur.execute(sql,([num1]))
+        cur1=con.cursor()
+        cur2=con.cursor()
+        sql1="SELECT siteid  FROM qms.aud2 where siteid=%s LIMIT 1"
+        sql2="SELECT deptid  FROM qms.aud2 where deptid=%s LIMIT 1"
+        cur1.execute(sql1,([num2]))
+        cur2.execute(sql2,([num3]))
+        if cur.fetchone()!=None and cur1.fetchone()!=None and cur2.fetchone()!=None:
+          print('hello')
+                #result = cur.fetchall()
+          '''userDetails = request.form
+          num1= userDetails['num1']
+          num2 = userDetails['num2']
+          num3 = userDetails['num3']
+          num1 = int(num1)
+          num2 = int(num2)
+            num3 = int(num3)'''
+          num1 = request.args.get('lid')
+          num2 = request.args.get('mid')
+          num3 = request.args.get('nid')
+          num1=int(num1)
+          num2=int(num2)
+          num3=int(num3)
+          sql = """select * from qms.aud2"""
+          df = pd.io.sql.read_sql(sql, con)
+          DepartmentID = df['deptid']
+          AuditorID = df['auditorid']
+          SiteID = df['siteid']
+          cper = df['cper']
+          X = np.array([AuditorID, SiteID, DepartmentID]).T
+          y = np.array(cper)
+          from sklearn.model_selection import train_test_split
+          X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.0)
+          abc = AdaBoostRegressor(n_estimators=50,
+                                  learning_rate=1)
+          model = abc.fit(X_train, y_train)
+          z = np.array([num1,num2,num3]).reshape(1, -1)
+          # Predict the response for test dataset
+          y_pred = model.predict(z)
+          y_pred=int(y_pred)
+          pythonDictionary = {'a':num1, 'b':num2, 'c':num3,'e':y_pred}
+          return  json.dumps(pythonDictionary)
+        return 'values entered are out of range'
     except ValueError:
       return 'enter valid parameters'
 
